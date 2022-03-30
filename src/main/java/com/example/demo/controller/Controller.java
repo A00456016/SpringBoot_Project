@@ -23,8 +23,7 @@ public class Controller {
     }
 
     @PostMapping("/guests")
-    public void add(@RequestBody Guest guest) {
-        userService.saveGuest(guest);
+    public ResponseEntity<Object> createGuest(@RequestBody Guest guest){
+        return userService.addGuest(guest);
     }
-
 }

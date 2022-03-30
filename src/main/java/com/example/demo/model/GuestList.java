@@ -7,25 +7,25 @@ public class GuestList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    public int guestId;
+    public Long id;
     public String guestName;
     public String gender;
 
     public GuestList() {
     }
 
-    public GuestList(int guestId, String guestName, String gender) {
-        this.guestId = guestId;
+    public GuestList(Long id, String guestName, String gender) {
+        this.id = id;
         this.guestName = guestName;
         this.gender = gender;
     }
 
-    public int getGuestId() {
-        return guestId;
+    public Long getId() {
+        return id;
     }
 
-    public void setGuestId(int guestId) {
-        this.guestId = guestId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getGuestName() {

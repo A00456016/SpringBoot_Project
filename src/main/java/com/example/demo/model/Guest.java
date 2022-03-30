@@ -1,7 +1,9 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -10,16 +12,17 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int guestId;
+    public Long guestId;
     private String hotelName;
     private String check_in;
     private String check_out;
-    private ArrayList<GuestList> guestList;
+    @OneToMany(targetEntity = GuestList.class)
+    private List<GuestList> guestList;
 
     public Guest() {
     }
 
-    public Guest(int guestId, String hotelName, String check_in, String check_out, ArrayList<GuestList> guestList) {
+    public Guest(Long guestId, String hotelName, String check_in, String check_out, List<GuestList> guestList) {
         this.guestId = guestId;
         this.hotelName = hotelName;
         this.check_in = check_in;
@@ -27,11 +30,11 @@ public class Guest {
         this.guestList = guestList;
     }
 
-    public int getGuestId() {
+    public Long getGuestId() {
         return guestId;
     }
 
-    public void setGuestId(int guestId) {
+    public void setGuestId(Long guestId) {
         this.guestId = guestId;
     }
 
@@ -59,11 +62,11 @@ public class Guest {
         this.check_out = check_out;
     }
 
-    public ArrayList<GuestList> getGuestList() {
-        return guestList;
+    public List<GuestList> getGuestList() {
+        return this.guestList;
     }
 
-    public void setGuestList(ArrayList<GuestList> guestList) {
+    public void setGuestList(List<GuestList> guestList) {
         this.guestList = guestList;
     }
 }
