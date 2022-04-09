@@ -1,72 +1,46 @@
 package com.example.demo.model;
-
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Entity
-@Table(name = "guests")
+@Table(name = "guest")
 public class Guest {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long guestId;
-    private String hotelName;
-    private String check_in;
-    private String check_out;
-    @OneToMany(targetEntity = GuestList.class)
-    private List<GuestList> guestList;
+
+    public Long id;
+    public String guestName;
+    public String gender;
 
     public Guest() {
     }
 
-    public Guest(Long guestId, String hotelName, String check_in, String check_out, List<GuestList> guestList) {
-        this.guestId = guestId;
-        this.hotelName = hotelName;
-        this.check_in = check_in;
-        this.check_out = check_out;
-        this.guestList = guestList;
+    public Guest(Long id, String guestName, String gender) {
+        this.id = id;
+        this.guestName = guestName;
+        this.gender = gender;
     }
 
-    public Long getGuestId() {
-        return guestId;
+    public Long getId() {
+        return id;
     }
 
-    public void setGuestId(Long guestId) {
-        this.guestId = guestId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public String getGuestName() {
+        return guestName;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
+    public void setGuestName(String guestName) {
+        this.guestName = guestName;
     }
 
-    public String getCheck_in() {
-        return check_in;
+    public String getGender() {
+        return gender;
     }
 
-    public void setCheck_in(String check_in) {
-        this.check_in = check_in;
-    }
-
-    public String getCheck_out() {
-        return check_out;
-    }
-
-    public void setCheck_out(String check_out) {
-        this.check_out = check_out;
-    }
-
-    public List<GuestList> getGuestList() {
-        return this.guestList;
-    }
-
-    public void setGuestList(List<GuestList> guestList) {
-        this.guestList = guestList;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
