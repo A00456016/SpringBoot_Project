@@ -25,7 +25,7 @@ public class UserService {
     private GuestRepository guestRepository;
 
     @Transactional
-    public /*ResponseEntity<Object>*/ String addGuest(Reservation reservation){
+    public String addGuest(Reservation reservation){
         Reservation newReservation = new Reservation();
         newReservation.setHotelName(reservation.getHotelName());
         newReservation.setCheck_in(reservation.getCheck_in());
@@ -35,11 +35,8 @@ public class UserService {
            Guest savedGuest = guestRepository.save(reservation.getGuestList().get(i));
            if (!guestRepository.findById(savedGuest.getId()).isPresent())
 
-               return "Failed creating guestlist";;
-               //return ResponseEntity.unprocessableEntity().body("Failed creating guestlist");
+               return "Failed creating guestlist";
         }
-
-        /* newGuest.setGuestList(guest.getGuestList()); */
         Reservation savedReservation = reservationRepository.save(newReservation);
         if(reservationRepository.findById(savedReservation.getGuestId()).isPresent()){
             StringBuilder date = new StringBuilder(savedReservation.getCheck_in());
@@ -47,11 +44,9 @@ public class UserService {
             date.deleteCharAt(2);
             String confirmation = date.toString() + savedReservation.getGuestId().toString();
             return confirmation;
-            //return ResponseEntity.accepted().body(savedGuest);
         }else
         {
             return "Failed creating guestlist";
-            //return ResponseEntity.unprocessableEntity().body("Failed to Create guest");
         }
     }
 }
